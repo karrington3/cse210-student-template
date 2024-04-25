@@ -1,11 +1,3 @@
-using system;
+using System;
 using Internal;
 
-Console.WriteLine("sup");
-
-
-Console.WriteLine("name");
-
-string name = Console.readline();
-
-Console.WriteLine($Hello, {name}!):
