@@ -6,7 +6,7 @@ class Program
     {
         Console.WriteLine("sup");
 
-       
+    
 
         string name = "bro";Console.Write("what name?");
 
