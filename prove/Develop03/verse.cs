@@ -1,5 +1,3 @@
-import Random;
-
 public class Verse {
     Random rand = new Random();
     
@@ -22,4 +20,3 @@ public class Verse {
     }
 
 }
-  
