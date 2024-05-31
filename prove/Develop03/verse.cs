@@ -1,5 +1,23 @@
 public class Verse {
     Random rand = new Random();
+    private List<Word> _scripture;
+    private string _scripwords;
+
+    public Verse() {
+        _scripture = new List<Word>();
+
+        GetScripture();
+
+        string[] words = _scripwords.Split(" ");
+
+        foreach (string word in words) {
+            _scripture.Add(new Word(word))
+            //to hide
+            hiddenText = new string('_', word.GetWord().Length);
+                Console.Write($"{hiddenText} ");
+            ;
+        }
+    }
     
     public string GetScripture(){
         using (StreamReader sr = new StreamReader("scripture.txt"))
@@ -10,13 +28,21 @@ public class Verse {
             {
                 scripture = sr.ReadLine();
             }
-        }
-        return scripture;
+            _scripwords = scripture;
+            return scripture;
+        } 
     }
 
     public int GetRandom() {
         int rng = rand.Next(1, 35);
         return rng;
+    }
+
+    public void DisplayScripture() {
+        foreach (Word word in _scripture) {
+            Console.WriteLine(word.GetWord());
+        }
+        Console.WriteLine(_scripture);
     }
 
 }
