@@ -8,18 +8,34 @@ public class Word {
     }
 
     public string GetWord() {
-        return word;
+        return returnword();
     }
 
     public void HideWord() {
         hide = true;
     }
 
-    public void DisplayWord() {
-        Console.WriteLine(word);
+    public string returnword() {
+        
+        return hide ? new String('_', word.Length) : word;
+        
     }
 
     public bool GetHide() {
         return hide;
     }
+
+//public override string ToString()
+// {
+//     if (isBlank)
+//     {
+//         string blankWord = "";
+//         for (int unused = 0; unused < wordLen; unused++)
+//         {
+//             blankWord += "_";
+//         }
+//         return blankWord;
+//     }
+//     return this.word;
+
 }

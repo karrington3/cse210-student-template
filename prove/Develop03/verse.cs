@@ -11,11 +11,8 @@ public class Verse {
         string[] words = _scripwords.Split(" ");
 
         foreach (string word in words) {
-            _scripture.Add(new Word(word))
-            //to hide
-            hiddenText = new string('_', word.GetWord().Length);
-                Console.Write($"{hiddenText} ");
-            ;
+            _scripture.Add(new Word(word));
+            
         }
     }
     
@@ -40,9 +37,10 @@ public class Verse {
 
     public void DisplayScripture() {
         foreach (Word word in _scripture) {
-            Console.WriteLine(word.GetWord());
+            Console.Write(word.GetWord()+' ');
         }
-        Console.WriteLine(_scripture);
+        Console.WriteLine(' ');
+    
     }
 
 }

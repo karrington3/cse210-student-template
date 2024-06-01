@@ -16,7 +16,7 @@ class Program
         Console.WriteLine("Press enter to hide words");
         userChoose = Console.ReadLine();
         if (userChoose == "2" ) {
-            Console.WriteLine("2");
+            break;
         }
         else if (userChoose == "1") {
             v.GetScripture();

@@ -10,7 +10,9 @@ public class Reference
         scriptureReference = scriptureReference;
     }
 
+
     public void printscripture(){
         Console.WriteLine(scriptureReference);
     }
+    public void HideWord() {}
 }
