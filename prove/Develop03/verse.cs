@@ -42,5 +42,21 @@ public class Verse {
         Console.WriteLine(' ');
     
     }
+    public void BlankRandomWords(int wordsToBlank)
+        {
+            int blankedWords = 0;
+            while (blankedWords < wordsToBlank)
+            {
+                int index = rand.Next(_scripture.Count);
+                if (!_scripture[index].GetHide())
+                {
+                    _scripture[index].HideWord();
+                    blankedWords++;
+                }
+            }
+        }
+
+
+
 
 }

@@ -9,7 +9,7 @@ class Program
         Verse v = new Verse();
         v.GetScripture();
         string userChoose = "";
-        do {
+        while (true){
         v.DisplayScripture();
         Console.WriteLine("1). New Scripture");
         Console.WriteLine("2). Exit");
@@ -18,20 +18,22 @@ class Program
         if (userChoose == "2" ) {
             break;
         }
-        else if (userChoose == "1") {
-            v.GetScripture();
+        if (userChoose == "1") {
+            // v.GetScripture()
+            string scripture = v.GetScripture();
+        Console.WriteLine(scripture);
         }
         else {
             // code for hiding words go here
-            Console.WriteLine("else");
+            v.BlankRandomWords(new Random().Next(2,5) );
+            
         }
         
         
-        }while (true);
+        }
 
 
 
-        string scripture = v.GetScripture();
-        Console.WriteLine(scripture);
+        
     }
 }
