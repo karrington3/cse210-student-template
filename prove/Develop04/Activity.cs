@@ -1,6 +1,6 @@
-public class Activity {
+public abstract class Activity {
     private string[] anime = ["...","0..",".0.","..0"];
-    private int _duration = 12;
+    private int duration = 12;
 
     public void animation(int time) {
         DateTime start =DateTime.Now;
