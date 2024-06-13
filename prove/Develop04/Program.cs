@@ -4,13 +4,13 @@ class Program
 {
     static void Main(string[] args)
     {
-        Activity animator = new Activity();
-        Breathing breathe = new Breathing();
-        Reflection reflect = new Reflection();
-        Listing list = new Listing();
+        //Activity animator = new Activity();
+        BreathingActivity breathe = new BreathingActivity();
+        ReflectionActivity reflect = new ReflectionActivity();
+        ListingActivity list = new ListingActivity();
         int userChoice = 0;
 
-        do {
+        while(userChoice != 0){
             Console.Clear();
             Console.WriteLine("Menu Options:");
             Console.WriteLine("  1. Start breathing activity\n  2. Start reflecting activity\n  3. Start listing activity\n  0. Exit");
@@ -21,30 +21,26 @@ class Program
             {
                 case 0:
                     Console.WriteLine("See ya!");
-                    animator.animation(2);
+                    breathe.animation(2);
                     break;
                 case 1:
-                    breathe.BreathAct();
+                    breathe.breathAct();
                     break;
                 case 2:
-                    reflect.ReflectAct();
+                    reflect.ReflectingAct();
                     break;
                 case 3:
                     list.ListingAct();
                     break;
                 default:
                     Console.WriteLine("Invalid Input!");
-                    animator.animation(1);
+                    list.animation(1);
                     break;
             }
 
-        } while(userChoice != 0);
-    }
-}
+        }
         
-
-        Animation.animation(12);
+        //Animation.animation(12);
     
     }
-}
 }

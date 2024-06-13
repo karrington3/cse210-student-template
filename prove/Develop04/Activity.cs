@@ -28,19 +28,17 @@ public abstract class Activity {
             Console.Write(i);
             Thread.Sleep(100);
             Console.Write("\b \b");
-
         }
-    public int SetDuration() {
-            //Had to do this long winded cast cause Console.Read was returning really weird numbers.
-            Console.Write("How long, in seconds, for your session?: ");
-            string Cast = Console.ReadLine();
-            int.TryParse(Cast, out this. duration);
-            return  duration;
     }
-        public int GetDuration() {
+    public int SetDuration() {
+        //Had to do this long winded cast cause Console.Read was returning really weird numbers.
+        Console.Write("How long, in seconds, for your session?: ");
+        string Cast = Console.ReadLine();
+        int.TryParse(Cast, out this. duration);
         return  duration;
     }
+    public int GetDuration() {
+        return  duration;
     }
-
 }
 

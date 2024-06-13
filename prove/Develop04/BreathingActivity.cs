@@ -1,3 +1,5 @@
+using Microsoft.VisualBasic;
+
 class BreathingActivity() : Activity {
     
 
@@ -7,8 +9,9 @@ class BreathingActivity() : Activity {
     private int breathOut2 =3;
 
     public void breathAct() {
-        console.clear();
+        Console.Clear();
         Console.WriteLine("Welcome to the Breathing Activity.\n");
+
         Console.WriteLine("we here to help with you breathing");
         Console.Write("\nHow long, in seconds, would you like for your session?: ");
 
@@ -28,41 +31,40 @@ class BreathingActivity() : Activity {
     }
 
     private void BreathTime (int time){
-        int Amount = 0;
+        //int Amount = 0;
         int NewBreathingIn = breathIn;
         int NewBreathingOut = breathOut;
 
 
-        DateTime start = Datetime.Now;
-        dateTime End= start.AddSeconds (time);
+        DateTime start = DateTime.Now;
+        DateTime End= start.AddSeconds (time);
 
-        while (DataTime.Now < fin){
+        while (DateTime.Now < End){
             int breathInVisual = NewBreathingIn;
-            int breathInVisual = NewBreathingOut;
+            int breathOutVisual = NewBreathingOut;
 
 
-            console.Write("breathe in.")
+            Console.Write("breathe in.");
             for (int i = NewBreathingIn; i > 0;i--){
-                console.Write(breathInVisual);
-                thread.Sleep(1000);
+                Console.Write(breathInVisual);
+                Thread.Sleep(1000);
                 Console.Write("\b \b");
                 breathInVisual--;
             }
             Console.Write("\nNow breathe out.");
-            for (int i = newBreathOut; i > 0; i--) {
+            for (int i = NewBreathingOut; i > 0; i--) {
                 Console.Write(breathOutVisual);
                 Thread.Sleep(1000);
                 Console.Write("\b \b");
                 breathOutVisual--;
             }
 
-            if (IncAmount == 0) {
-                newBreathIn += _breathInInc;
-                newBreathOut += _breathOutInc;
-                IncAmount++;
-            }
+            // if (Amount == 0) {
+            //     NewBreathingIn += BreathInInc;
+            //     NewBreathingOut += BreathOutInc;
+            //     Amount++;
+            //}
             Console.WriteLine("\n");
-
         }
     }
 

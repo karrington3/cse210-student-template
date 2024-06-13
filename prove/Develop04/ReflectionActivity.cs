@@ -1,9 +1,9 @@
-class Reflection : Activity{
+class ReflectionActivity : Activity{
 
     private List<string> prompts;
     private List<string> questions;
 
-    public Reflection() {
+    public ReflectionActivity() {
         this.prompts = new List<string>() {
             "Think of a time when you stood up for someone else.", 
             "Think of a time when you did something really difficult.",
@@ -42,12 +42,12 @@ class Reflection : Activity{
         DateTime start = DateTime.Now;
         DateTime fin = start.AddSeconds(time);
 
-        while(DateTime.Now < end) {
+        while(DateTime.Now < fin) {
             bool isNotDuplicate = false;
             int i = 0;
 
         do{
-            rndQuestion = rng.Next(_questions.Count - 1);
+            rndQuestion = rng.Next( questions.Count - 1);
 
                 if (chosenNums[rndQuestion] == 0) {
                     isNotDuplicate = true;
@@ -58,13 +58,13 @@ class Reflection : Activity{
                     isNotDuplicate = false;
                     i++;
                 }
-                } while(!isNotDuplicate && i < (_questions.Count + _questions.Count));
+                } while(!isNotDuplicate && i < (questions.Count + questions.Count));
 
-            if (i >= _questions.Count) {
+            if (i >= questions.Count) {
                 Console.WriteLine("All Questions Exhausted!");
                 return;
             }
-            Console.WriteLine($"> {_questions[rndQuestion]}");
+            Console.WriteLine($"> {questions[rndQuestion]}");
             animation(5);
 
         }
@@ -87,7 +87,7 @@ class Reflection : Activity{
         Console.Write("You may begin in: ");
         Countdown(5);
 
-        console.clear;
+        Console.Clear();
 
         GetRndQuestions(seconds);
         Console.WriteLine("Well done!!\n");
