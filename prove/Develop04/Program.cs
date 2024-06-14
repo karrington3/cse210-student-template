@@ -4,11 +4,12 @@ class Program
 {
     static void Main(string[] args)
     {
+        Console.Write("dfghjkhgfhj");
         //Activity animator = new Activity();
         BreathingActivity breathe = new BreathingActivity();
         ReflectionActivity reflect = new ReflectionActivity();
         ListingActivity list = new ListingActivity();
-        int userChoice = 0;
+        int userChoice = -1;
 
         while(userChoice != 0){
             Console.Clear();

@@ -5,9 +5,7 @@ class BreathingActivity() : Activity {
 
     private int breathIn =2;
     private int breathOut =3;
-    private int breathIn2 =2;
-    private int breathOut2 =3;
-
+    
     public void breathAct() {
         Console.Clear();
         Console.WriteLine("Welcome to the Breathing Activity.\n");
