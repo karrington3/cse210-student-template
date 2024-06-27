@@ -1,76 +1,58 @@
-using System.Diagnostics.Contracts;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Xml;
+using System;
+using System.Collections.Generic;
 
-class Goals {
+public class Goals
+{
+    // Protected fields accessible by derived classes
+    protected string _title;
+    protected string _description;
+    protected int _points;
+    protected bool _complete;
 
-    protected bool isComplete;
-    protected double points;
-    protected string goal;
-    protected int numCompleted;
-
-    protected int level;
-    protected List<string> levelTitle;
-    protected double lvlUp;
-    protected double totalPoints;
-
-    public Goals(string g, int p) {
-        goal = g;
-        points = p;
-        levelTitle = new List<string>() {
-            "Fool",
-            "Newbie",
-            "Green Fool",
-            "Experienced Newbie",
-            "Achiever",
-            "Intermediate Goaler",
-            "Blue Fool",
-            "Greater Achiever",
-            "Advanced Goaler",
-            "Super Achiever",
-            "Royal Blue Fool",
-            "Certified Gooner"
-        };
+    // Constructor to initialize a Goal object with title, description, points, and completion status
+    public Goals(string title, string description, int points, bool complete)
+    {
+        _title = title;
+        _description = description;
+        _complete = complete;
+        _points = points;
     }
 
-    public bool isCompleted() {
-        return isComplete;
+    // Constructor to initialize a Goal object with title, description, and points
+    public Goals(string title, string description, int points)
+    {
+        _title = title;
+        _description = description;
+        _complete = false; // Initialize as incomplete
+        _points = points;
+    }
+    
+    // Method to get goal information as a list of strings
+    public virtual List<string> GetGoalInfoList()
+    {
+        // Create a list containing goal information in a specific format
+        List<string> goalInfo = new List<string> { "Goal", $"{_title}", $"{_description}", $"{_points}", $"{_complete}" };
+        return goalInfo; // Return the list of goal information
     }
 
-    public virtual void Completed() {
-        isComplete = true;
-        totalPoints += points;
+    // Method to display the goal details, including completion status, title, description, and points
+    public virtual string DisplayGoal()
+    {
+        // Use ternary operator to display [x] for completed and [ ] for incomplete goals
+        string checkbox = _complete ? "[x]" : "[ ]";
+        return $"{checkbox} {_title} :\n\t{_description}\n\tPoints: {_points}";
     }
 
-    public void SetGoal(string g) {
-        goal = g;
+    // Method to update the goal's completion status to true and return the points
+    public virtual int UpdateGoal()
+    {
+        _complete = true; // Mark the goal as complete
+        return _points; // Return the points associated with this goal
     }
 
-    public string GetGoal() {
-        return goal;
+    // Method to check if the goal is complete
+    public bool IsComplete()
+    {
+        return _complete; // Return the completion status of the goal
     }
-
-    public virtual void DisplayGoal() {
-        if (isComplete) {
-            Console.WriteLine($"[X] {goal}");
-        }
-        else {
-            Console.WriteLine($"[] {goal}");
-        }
-    }
-
-    public void SetPoints(int p) {
-        points = p;
-    }
-
-    public double GetPoints() {
-        return points;
-    }
-
-    public void DisplayScore() {
-        Console.WriteLine($"Level {level}: {levelTitle[level-1]}");
-        Console.WriteLine($"Total Points: {totalPoints}");
-    }
-
 }
