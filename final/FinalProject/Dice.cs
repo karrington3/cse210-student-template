@@ -27,22 +27,22 @@ public class Dice {
     }
 
     public int rollD20() {
-        return rng.Next(1,20);
+        return rng.Next(1,20+1);
     }
 
     public int rollD12() {
-        return rng.Next(1,12);
+        return rng.Next(1,12+1);
     }
 
     public int rollD10() {
-        return rng.Next(1,10);
+        return rng.Next(1,10+1);
     }
 
     public int rollD8() {
-        return rng.Next(1,8);
+        return rng.Next(1,8+1);
     }
 
     public int rollD6() {
-        return rng.Next(1,6);
+        return rng.Next(1,6+1);
     }
 }

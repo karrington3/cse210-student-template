@@ -34,7 +34,6 @@ using System;
 
         public void CreateStats()
         {
-            stats["Strength"] = 5;
             string[] statNames = {"Str", "Dex", "Con", "Int", "Wis", "Cha"};
             foreach (string s in statNames)
             {

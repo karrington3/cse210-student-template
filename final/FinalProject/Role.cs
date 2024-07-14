@@ -3,5 +3,5 @@ public class Role {
     int currentHP;
     string hitType;
     
-// bard use dex with raper/ fighter us str with greatsword / wiz use int with staff
+// bard use dex with rapier/ fighter us str with greatsword / wiz use int with staff
 }
