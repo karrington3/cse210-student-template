@@ -6,7 +6,7 @@ using System;
     {
         private static Random random = new Random();
         private static Dice dice = new Dice();
-        private static IDictionary<string,int> stats;
+        private static IDictionary<string,int> stats = new Dictionary<string,int>{};
 
         // Method to roll a single die with a given number of sides
         public static int RollDie(int sides)
@@ -23,7 +23,7 @@ using System;
                 rolls[i] = dice.rollD6();
             }
             Array.Sort(rolls);
-            return rolls[0] + rolls[2] + rolls[3];
+            return rolls[0] + rolls[1] + rolls[2];
         }
 
         // Method to calculate the modifier for a given ability score
@@ -32,7 +32,7 @@ using System;
             return (abilityScore - 10) / 2;
         }
 
-        public static void CreateStats()
+        public void CreateStats()
         {
             stats["Strength"] = 5;
             string[] statNames = {"Str", "Dex", "Con", "Int", "Wis", "Cha"};
@@ -65,5 +65,8 @@ using System;
         //elf +2 dex and +1 wis
         //dwarf +2 con and +1 wis
         //dragonborn +2 str and +1 chr
+
+        //inventory
+        // all player heath is 20+ con and all player armor is 15
 
     
