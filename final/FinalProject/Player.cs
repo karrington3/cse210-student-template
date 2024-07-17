@@ -1,71 +1,92 @@
+
 using System;
+using System.Collections.Generic;
 
+public class Player
+{
+    private static Random random = new Random();
+    private static Dice dice = new Dice();
+    private static IDictionary<string, int> stats = new Dictionary<string, int>();
 
-
-    public class Player
+    public enum Race
     {
-        private static Random random = new Random();
-        private static Dice dice = new Dice();
-        private static IDictionary<string,int> stats = new Dictionary<string,int>{};
+        Human,
+        Elf,
+        Dwarf,
+        Dragonborn
+    }
 
-        // Method to roll a single die with a given number of sides
-        public static int RollDie(int sides)
+    // Method to roll a single die with a given number of sides
+    public static int RollDie(int sides)
+    {
+        return random.Next(1, sides + 1);
+    }
+
+    // Method to roll 4d6 and drop the lowest die roll
+    public static int RollStat()
+    {
+        int[] rolls = new int[4];
+        for (int i = 0; i < 4; i++)
         {
-            return random.Next(1, sides + 1);
+            rolls[i] = dice.rollD6();
         }
+        Array.Sort(rolls);
+        return rolls[1] + rolls[2] + rolls[3]; // sum of the top 3 rolls
+    }
 
-        // Method to roll 4d6 and drop the lowest die roll
-        public static int RollStat()
+    // Method to calculate the modifier for a given ability score
+    public static int CalculateModifier(int abilityScore)
+    {
+        return (abilityScore - 10) / 2;
+    }
+
+    // Method to apply race modifiers
+    public static void ApplyRaceModifiers(Race race)
+    {
+        switch (race)
         {
-            int[] rolls = new int[4];
-            for (int i = 0; i < 4; i++)
-            {
-                rolls[i] = dice.rollD6();
-            }
-            Array.Sort(rolls);
-            return rolls[0] + rolls[1] + rolls[2];
-        }
-
-        // Method to calculate the modifier for a given ability score
-        public static int CalculateModifier(int abilityScore)
-        {
-            return (abilityScore - 10) / 2;
-        }
-
-        public void CreateStats()
-        {
-            string[] statNames = {"Str", "Dex", "Con", "Int", "Wis", "Cha"};
-            foreach (string s in statNames)
-            {
-                int abilityScore = RollStat();
-                stats[s] = CalculateModifier(abilityScore);
-                DisplayStatWithModifier(s,abilityScore,stats[s]);
-            }
-        }
-
-        // Method to display the ability score and its modifier
-        public static void DisplayStatWithModifier(string statName, int abilityScore, int modifier)
-        {
-
-            Console.WriteLine($"{statName}: Rolled Stat: {abilityScore}, Modifier: {modifier}");
-
+            case Race.Human:
+                foreach (var key in stats.Keys.ToList())
+                {
+                    stats[key] += 1;
+                }
+                break;
+            case Race.Elf:
+                stats["Dex"] += 2;
+                stats["Wis"] += 1;
+                break;
+            case Race.Dwarf:
+                stats["Con"] += 2;
+                stats["Wis"] += 1;
+                break;
+            case Race.Dragonborn:
+                stats["Str"] += 2;
+                stats["Cha"] += 1;
+                break;
         }
     }
 
+    public void CreateStats(Race race)
+    {
+        string[] statNames = { "Str", "Dex", "Con", "Int", "Wis", "Cha" };
+        foreach (string s in statNames)
+        {
+            int abilityScore = RollStat();
+            stats[s] = abilityScore;
+            DisplayStatWithModifier(s, abilityScore, CalculateModifier(abilityScore));
+        }
+        ApplyRaceModifiers(race);
+        foreach (var stat in stats)
+        {
+            Console.WriteLine("with race modifers");
+        
+            DisplayStatWithModifier(stat.Key, stat.Value, CalculateModifier(stat.Value));
+        }
+    }
 
-    
-
-
-
-
-        //race fun 
-
-        //human +1 to all stat
-        //elf +2 dex and +1 wis
-        //dwarf +2 con and +1 wis
-        //dragonborn +2 str and +1 chr
-
-        //inventory
-        // all player heath is 20+ con and all player armor is 15
-
-    
+    // Method to display the ability score and its modifier
+    public static void DisplayStatWithModifier(string statName, int abilityScore, int modifier)
+    {
+        Console.WriteLine($"{statName}: Rolled Stat: {abilityScore}, Modifier: {modifier}");
+    }
+}
