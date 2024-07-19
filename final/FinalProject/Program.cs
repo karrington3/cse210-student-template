@@ -92,9 +92,10 @@ class Program
         foreach (Event ev in events)
         {
             Console.WriteLine($"You entered a {ev.GetType().Name} room. Roll a d20 to pass the check (DC {ev.DifficultyCheck}).");
+            Console.ReadKey();
             int roll = dice.DiceManager("D20");
-            Console.WriteLine($"You rolled a {roll}.");
             int mod= myCharacter.getStat(ev.roomStat);
+            Console.WriteLine($"You rolled a {roll} + {mod} your modifier.");
             if (roll + mod >= ev.DifficultyCheck)
             {
                 ev.TriggerGoodEvent();

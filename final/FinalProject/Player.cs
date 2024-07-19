@@ -80,15 +80,15 @@ public class Player
         foreach (string s in statNames)
         {
             int abilityScore = RollStat();
-            stats[s] = abilityScore;
+            stats[s] = CalculateModifier(abilityScore);
             DisplayStatWithModifier(s, abilityScore, CalculateModifier(abilityScore));
         }    Console.WriteLine("with race modifers");
         ApplyRaceModifiers(race);
         foreach (var stat in stats)
         {
         
-        
-            DisplayStatWithModifier(stat.Key, stat.Value, CalculateModifier(stat.Value));
+            Console.WriteLine($"{stat.Key}: Modifier: {stat.Value}");
+
         }
         // Calculate health with Constitution modifier
                 int conModifier = CalculateModifier(stats["Con"]);
