@@ -1,7 +1,7 @@
 
 using System;
 using System.Collections.Generic;
-
+using System.Linq;
 public class Player
 {
     private static Random random = new Random();
@@ -15,6 +15,10 @@ public class Player
         Dwarf,
         Dragonborn
     }
+
+
+    private int health;
+    public int Health => health; // Property to get the health value
 
     // Method to roll a single die with a given number of sides
     public static int RollDie(int sides)
@@ -74,14 +78,18 @@ public class Player
             int abilityScore = RollStat();
             stats[s] = abilityScore;
             DisplayStatWithModifier(s, abilityScore, CalculateModifier(abilityScore));
-        }
+        }    Console.WriteLine("with race modifers");
         ApplyRaceModifiers(race);
         foreach (var stat in stats)
         {
-            Console.WriteLine("with race modifers");
+        
         
             DisplayStatWithModifier(stat.Key, stat.Value, CalculateModifier(stat.Value));
         }
+        // Calculate health with Constitution modifier
+                int conModifier = CalculateModifier(stats["Con"]);
+                health = 20 + conModifier;
+                Console.WriteLine($"Health: {health}");
     }
 
     // Method to display the ability score and its modifier
