@@ -3,6 +3,7 @@ public class ConstitutionRoom : Event
     public ConstitutionRoom(int dc)
     {
         DifficultyCheck = dc;
+        roomStat = "Con";
     }
 
     public override void TriggerGoodEvent()

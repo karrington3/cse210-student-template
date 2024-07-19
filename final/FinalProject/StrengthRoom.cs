@@ -3,6 +3,8 @@ public class StrengthRoom : Event
     public StrengthRoom(int dc)
     {
         DifficultyCheck = dc;
+        roomStat = "Str";
+        
     }
 
     public override void TriggerGoodEvent()

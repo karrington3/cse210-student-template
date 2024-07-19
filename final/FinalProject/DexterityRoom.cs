@@ -4,6 +4,7 @@ public class DexterityRoom : Event
     public DexterityRoom(int dc)
     {
         DifficultyCheck = dc;
+        roomStat = "Dex";
     }
 
     public override void TriggerGoodEvent()

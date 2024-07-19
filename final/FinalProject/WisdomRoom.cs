@@ -3,6 +3,7 @@ public class WisdomRoom : Event
     public WisdomRoom(int dc)
     {
         DifficultyCheck = dc;
+        roomStat = "Wis";
     }
 
     public override void TriggerGoodEvent()

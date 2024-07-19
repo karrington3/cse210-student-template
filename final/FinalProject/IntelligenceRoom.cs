@@ -3,6 +3,7 @@ public class IntelligenceRoom : Event
     public IntelligenceRoom(int dc)
     {
         DifficultyCheck = dc;
+        roomStat = "Int";
     }
 
     public override void TriggerGoodEvent()

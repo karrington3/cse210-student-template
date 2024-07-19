@@ -7,6 +7,10 @@ public class Player
     private static Random random = new Random();
     private static Dice dice = new Dice();
     private static IDictionary<string, int> stats = new Dictionary<string, int>();
+    public int getStat(string key)
+    {
+        return stats[key];
+    }
 
     public enum Race
     {

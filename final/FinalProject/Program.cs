@@ -20,8 +20,8 @@ class Program
         // Use the race variable in the CreateStats function below
 
         Console.WriteLine("pick a Race : 1.Human/+1 to all stats  2.Elf 3.dragonborn 4.dwarf ");
-        ConsoleKey choice;
-        choice = Console.ReadKey().Key;
+        char choice = Console.ReadKey().KeyChar;
+    
 
 
     Player.Race HoldR;
@@ -29,17 +29,17 @@ class Program
     
     switch (choice)
         {
-            case ConsoleKey.NumPad1:
+            case '1':
                 
                 HoldR = Player.Race.Human ;
                 break;
-            case ConsoleKey.NumPad2:
+            case '2':
                 HoldR = Player.Race.Elf;
                 break;
-            case ConsoleKey.NumPad3 :
+            case '3' :
                 HoldR=Player.Race.Dragonborn;
                 break;
-            case ConsoleKey.NumPad4 :
+            case '4' :
                 HoldR=Player.Race.Dwarf;
                 break;
             default:
@@ -67,8 +67,8 @@ class Program
         
         Console.WriteLine($"Your final health is: {myCharacter.Health} try not to die");
         
-        Console.WriteLine("pick a weapon");
-        Console.WriteLine("1");
+        // Console.WriteLine("pick a weapon");
+        // Console.WriteLine("1");
         //TODO
 
         Console.WriteLine("Press any key to continue...");
@@ -79,12 +79,12 @@ class Program
 // List of events (rooms) in the dungeon
         List<Event> events = new List<Event>
         {
-            new StrengthRoom(1),     // Strength check DC 15
-            new CharismaRoom(1),     // Charisma check DC 12
-            new IntelligenceRoom(1), // Intelligence check DC 14
-            new DexterityRoom(1),    // Dexterity check DC 10
-            new WisdomRoom(1),       // Wisdom check DC 13
-            new ConstitutionRoom(1)  // Constitution check DC 16
+            new StrengthRoom(10),     // Strength check DC 15
+            new CharismaRoom(10),     // Charisma check DC 12
+            new IntelligenceRoom(10), // Intelligence check DC 14
+            new DexterityRoom(10),    // Dexterity check DC 10
+            new WisdomRoom(10),       // Wisdom check DC 13
+            new ConstitutionRoom(10)  // Constitution check DC 16
         };
     Shuffle(events);
 
@@ -94,8 +94,8 @@ class Program
             Console.WriteLine($"You entered a {ev.GetType().Name} room. Roll a d20 to pass the check (DC {ev.DifficultyCheck}).");
             int roll = dice.DiceManager("D20");
             Console.WriteLine($"You rolled a {roll}.");
-
-            if (roll >= ev.DifficultyCheck)
+            int mod= myCharacter.getStat(ev.roomStat);
+            if (roll + mod >= ev.DifficultyCheck)
             {
                 ev.TriggerGoodEvent();
             }

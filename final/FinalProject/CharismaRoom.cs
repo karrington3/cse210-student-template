@@ -3,6 +3,7 @@ public class CharismaRoom : Event
     public CharismaRoom(int dc)
     {
         DifficultyCheck = dc;
+        roomStat = "Cha";
     }
 
     public override void TriggerGoodEvent()
