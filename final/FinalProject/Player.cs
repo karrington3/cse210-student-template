@@ -22,8 +22,16 @@ public class Player
 
 
     private int health;
-    public int Health => health; // Property to get the health value
-
+     // Property to get the health value
+    public int getHealth()
+    {
+        return health;
+    }
+    public void damage()
+    {
+        health -= 4;
+    }
+    
     // Method to roll a single die with a given number of sides
     public static int RollDie(int sides)
     {
@@ -91,7 +99,7 @@ public class Player
 
         }
         // Calculate health with Constitution modifier
-                int conModifier = CalculateModifier(stats["Con"]);
+                int conModifier = (stats["Con"]);
                 health = 20 + conModifier;
                 Console.WriteLine($"Health: {health}");
     }
