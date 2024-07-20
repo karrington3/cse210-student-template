@@ -1,0 +1,2 @@
+Hi! Welcome to Stat Dungeon. This game is inspired by my love for Dungeons and Dragons. 
+This is a CS project in which the player rolls stats, classes, and sees if he or she can pass the events in the adventure. Good luck!
